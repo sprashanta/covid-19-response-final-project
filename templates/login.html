@@ -1,0 +1,41 @@
+{% extends 'Base/base.html' %}
+{% load static %}
+{% block content %}
+    {% if message %}
+        <div class="col-md-12 text-center">
+            <div class="card" style="border: 1px solid #de2222; background-color: antiquewhite; padding: 50px 20px; margin: 0px 0 50px 0;">
+                <div class="card-body text-center">
+                    {{ message }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+            <h2>Log In</h2>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <label for="phone_number">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter Your Phone Number">
+        </div>
+
+        <div class="col-md-9 col-sm-9">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password">
+        </div>
+
+        <div class="col-md-9 col-sm-9">
+            </br></br>
+            <input type="submit" class="form-control" name="submit">
+        </div>
+
+        <div>
+            </br></br></br></br>
+            <div class="col-md-12 col-sm-12">
+                <a href="{% url 'password_reset' %}" class="btn btn-primary"> Forget Password </a>
+            </div>
+        </div>
+    </form>
+
+{% endblock content %}

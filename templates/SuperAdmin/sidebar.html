@@ -1,0 +1,55 @@
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li>
+                    <a href="{% url 'SuperAdminHome' %}"><i class="fa fa-home"></i> Home </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'list_location' %}"><i class="fa fa-home"></i> Location </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'list_degree' %}"><i class="fa fa-cube"></i> Degree </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'list_specialist' %}"><i class="fa fa-server"></i> Specialist </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'list_hospital' %}"><i class="fa fa-clone"></i> Hospital </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'list_doctor' %}"><i class="fa fa-edit"></i> Doctor </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'admin_view_appointment' %}"><i class="fa fa-edit"></i> Appointment </a>
+                  </li>
+
+                  <li>
+                    <a href="{% url 'list_icu' %}"><i class="fa fa-server"></i> ICU Bed </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'icu_booking_list' %}"><i class="fa fa-server"></i>ICU bed Request </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'list_oxygen' %}"><i class="fa fa-server"></i> Oxygen Cylinder </a>
+                  </li>
+
+                  <li>
+                    <a href="{% url 'list_plasma' %}"><i class="fa fa-server"></i> Plasma </a>
+                  </li>
+                  <li>
+                    <a> <i class="fa fa-desktop"></i>Profile</a>
+                    <ul class="nav child_menu">
+                      <li><a href="{% url 'super_admin_profile' %}">Profile</a></li>
+                      <li><a href="{% url 'super_admin_password_change' %}">Change Password</a></li>
+
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->

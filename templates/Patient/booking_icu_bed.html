@@ -1,0 +1,44 @@
+{% extends 'Base/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+            <h2>Patient View All Booking Icu Bed List </h2>
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <table class="table table-bordered">
+                  <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Patient Name</th>
+                          <th scope="col">Patient Phone Number</th>
+                          <th scope="col">Hospital Name</th>
+                          <th scope="col">Icu Bed Booking Status</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                   {% for booking_icu_bed in booking_icu_bed %}
+                        <tr>
+
+                                  <th scope="row">{{ forloop.counter }}</th>
+                                  <td>{{ booking_icu_bed.patient_name }}</td>
+                                  <td>{{ booking_icu_bed.patient_name.phone_number }}</td>
+                                  <td>{{ booking_icu_bed.hospital_name }}</td>
+                                  <td>{{ booking_icu_bed.status }}</td>
+
+                        </tr>
+                  {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+<br>
+<br>
+<br>
+
+
+
+
+{% endblock content %}

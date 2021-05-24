@@ -1,0 +1,65 @@
+{% extends 'SuperAdmin/SuperAdminNavbar.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+
+
+ <p>
+     <a href="{% url 'create_plasma' %}" type="button" style="float:right;" class="btn btn-primary">
+         <span class="glyphicon glyphicon-plus"></span>
+            Create a Plasma
+     </a>
+
+  </p>
+
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>All Plasma <small>Donor List</small></h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                        <table class="table" id="datatable-buttons"  style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>S. NO.</th>
+                                    <th>Donor Name </th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>Blood Group </th>
+                                    <th>Created</th>
+                                    <th>Running</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 {% for plasma in plasma %}
+                                    <tr>
+                                      <th scope="row">{{ forloop.counter }}</th>
+                                      <td>{{ plasma.donor_name }}</td>
+                                      <td>{{ plasma.donor_name.email }}</td>
+                                      <td>{{ plasma.donor_name.phone_number }}</td>
+                                      <td>{{ plasma.blood_group }}</td>
+                                      <td>{{ plasma.created }}</td>
+                                      <td>{{ plasma.days_different.day }} Days</td>
+
+                                    </tr>
+                                 {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

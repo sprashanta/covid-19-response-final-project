@@ -1,0 +1,28 @@
+{% extends 'Base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% if message %}
+        <div class="col-md-12 text-center">
+            <div class="card" style="border: 1px solid #de2222; background-color: antiquewhite; padding: 50px 20px; margin: 0px 0 50px 0;">
+                <div class="card-body text-center">
+                    {{ message }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+            <h1>
+                 <a href="{% url 'patient_signup' %}">Create A Patient Account</a>
+            </h1>
+
+            <br>
+            <h1>
+                 <a href="{% url 'donor_signup' %}">Create A Donor Account</a>
+            </h1>
+
+        </div>
+
+
+{% endblock content %}

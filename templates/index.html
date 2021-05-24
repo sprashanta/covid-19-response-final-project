@@ -1,0 +1,131 @@
+{% extends 'Base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div>
+         {% include 'Base/carousel.html' %}
+    </div>
+    <div>
+         {% include 'Base/about_covid.html' %}
+    </div>
+<div>
+     <section id="news" data-stellar-background-ratio="2.5">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                         <!-- SECTION TITLE -->
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                              <h2>Hospital Icu Bed</h2>
+                         </div>
+                    </div>
+                    {% for hospital_icu_bed in hospital_icu_bed %}
+                        <div class="col-md-4 col-sm-6">
+                             <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
+
+                                  <a href="news-detail.html">
+                                       <img src="{% static 'images/news-image2.jpg' %}" class="img-responsive" alt="">
+                                  </a>
+                                  <div class="news-info">
+                                       <span>{{ date_today }}</span>
+                                       <h3><a href="#">{{ hospital_icu_bed.hospital }}</a></h3>
+                                       <h4>ICU Bed Number Available: {{ hospital_icu_bed.icu_bed_number }}</h4>
+                                        <h5>Location : {{ hospital_icu_bed.hospital.location }}</h5>
+                                  </div>
+                                  <div class="author">
+                                       <div class="author-info">
+                                            <a class="btn btn-success" type="button" href="{% url 'patient_booking_icu_bed' hospital_icu_bed.id %}">Icu Bed Book Now </a>
+                                       </div>
+                                  </div>
+                             </div>
+                        </div>
+                    {% endfor %}
+               </div>
+               <br><br><br>
+               <div>
+                    <a class="btn btn-primary" type="button" href="{% url 'icu_bed' %}">See All Hospital List ICU Bed</a>
+               </div>
+          </div>
+     </section>
+
+</div>
+<div>
+     <section id="news1" data-stellar-background-ratio="2.5">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                         <!-- SECTION TITLE -->
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                              <h2>Hospital Oxygen Cylinder</h2>
+                         </div>
+                    </div>
+                    {% for hospital_oxygen_cylinder in hospital_oxygen_cylinder %}
+                        <div class="col-md-4 col-sm-6">
+                             <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
+                                  <a href="news-detail.html">
+                                       <img src="{% static 'images/news-image2.jpg' %}" class="img-responsive" alt="">
+                                  </a>
+                                  <div class="news-info">
+                                       <span>{{ date_today }}</span>
+                                       <h3><a href="#">{{ hospital_oxygen_cylinder.hospital }}</a></h3>
+                                       <h4>
+                                           <a href="{{ hospital_oxygen_cylinder.organization_url }}" target="_blank"> {{ hospital_oxygen_cylinder.organization_name }} </a>
+                                       </h4>
+                                       <h5>Location : {{ hospital_oxygen_cylinder.location }}</h5>
+                                  </div>
+                             </div>
+                        </div>
+                   {% endfor %}
+               </div>
+               <br><br><br>
+               <div>
+                    <a class="btn btn-primary" type="button" href="{% url 'oxygen_cylinder' %}">See All Hospital List Oxygen Cylinder</a>
+               </div>
+          </div>
+     </section>
+</div>
+<br>
+<div>
+     <section id="news2" data-stellar-background-ratio="2.5">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                         <!-- SECTION TITLE -->
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                              <h2>View All Plasma Donor</h2>
+                         </div>
+                    </div>
+                    <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Donor Name</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">Blood Group</th>
+                              <th scope="col">Donor Location</th>
+                              <th scope="col">Phone Number</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                             {% for plasma_donor in plasma_donor %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ plasma_donor.donor_name }}</td>
+                                    <td>{{ plasma_donor.donor_name.email }}</td>
+                                    <td>{{ plasma_donor.blood_group }}</td>
+                                    <td>{{ plasma_donor.donor_location }}</td>
+                                    <td>{{ plasma_donor.donor_name.phone_number }}</td>
+                                </tr>
+                             {% endfor %}
+                          </tbody>
+                    </table>
+               </div>
+               <br><br><br>
+               <div>
+                    <a class="btn btn-primary" type="button" href="{% url 'plasma_donor' %}">See All Plasma Donor List</a>
+               </div>
+          </div>
+     </section>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,62 @@
+{% extends 'SuperAdmin/SuperAdminNavbar.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<br>
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>All Appointment <small>List</small></h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                        <table class="table" id="datatable-buttons"  style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>S. NO.</th>
+                                    <th>Patient Name </th>
+                                    <th>Patient Problem</th>
+                                    <th>Appointment Status</th>
+                                    <th>Doctor Name</th>
+                                    <th>Meet Up link</th>
+                                    <th>Meet Up Date</th>
+                                    <th>Meet Up Time</th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 {% for appointment in appointment %}
+                                    <tr>
+                                          <th scope="row">{{ forloop.counter }}</th>
+                                          <td>{{ appointment.patient_name }}</td>
+                                          <td>{{ appointment.patient_description }}</td>
+                                          <td>{{ appointment.status }}</td>
+                                          <td>{{ appointment.doctor_name }}</td>
+                                          <td>{{ appointment.meet_link }}</td>
+                                          <td>{{ appointment.date }}</td>
+                                          <td>{{ appointment.time }}</td>
+                                          <td>
+                                              <a href="{% url 'admin_appointment_update' appointment.pk %}" class="btn btn-primary"> Update</a>
+                                              <a href="{% url 'admin_appointment_delete' appointment.pk %}" class="btn btn-danger"> Delete</a>
+                                          </td>
+                                    </tr>
+                                 {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'Base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% if message %}
+        <div class="col-md-12 text-center">
+            <div class="card" style="border: 1px solid #de2222; background-color: antiquewhite; padding: 50px 20px; margin: 0px 0 50px 0;">
+                <div class="card-body text-center">
+                    {{ message }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <form id="appointment-form" role="form" method="POST" action="{% url 'donor_signup' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+            <h2>Create A Donor Account</h2>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            {{ form|crispy }}
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <br><br>
+            <input type="submit" class="form-control" name="submit">
+        </div>
+    </form>
+
+{% endblock content %}

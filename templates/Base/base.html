@@ -1,0 +1,38 @@
+{% load static %}
+<html lang="en">
+<head>
+    {% include 'Base/head.html' %}
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+     <section class="preloader">
+          <div class="spinner">
+               <span class="spinner-rotate"></span>
+          </div>
+     </section>
+     <header>
+         {% include 'Base/header.html' %}
+     </header>
+     <!-- MENU -->
+     <section class="navbar navbar-default navbar-static-top" role="navigation" style="width: 1912px; position: fixed; top: 0px;">
+          {% include 'Base/navbar.html' %}
+     </section>
+     <!-- HOME -->
+
+    <section id="team" data-stellar-background-ratio="1">
+          <div class="container">
+               <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                         {% block content %}
+                         {% endblock content %}
+                    </div>
+                    <div class="clearfix"></div>
+               </div>
+          </div>
+    </section>
+    <footer data-stellar-background-ratio="5">
+             {% include 'Base/footer.html' %}
+    </footer>
+     {% include 'Base/jsScript.html' %}
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+{% extends 'SuperAdmin/SuperAdminNavbar.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+
+
+ <p>
+     <a href="{% url 'create_hospital' %}" type="button" style="float:right;" class="btn btn-primary">
+         <span class="glyphicon glyphicon-plus"></span>
+            Create a Hospital
+     </a>
+
+  </p>
+
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>All Hospital<small>List</small></h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                        <table class="table" id="datatable-buttons"  style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>S. NO.</th>
+                                    <th>Location Name </th>
+                                    <th>Hospital Name </th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 {% for hospital in hospital %}
+                                    <tr>
+                                      <th scope="row">{{ forloop.counter }}</th>
+                                      <td>{{ hospital.location }}</td>
+                                      <td>{{ hospital.name }}</td>
+                                      <td>
+                                          <a href="{% url 'update_hospital' hospital.id %}" class="btn btn-success"> Edit</a>
+                                          <a href="{% url 'delete_hospital' hospital.id %}" class="btn btn-danger"> Delete</a>
+                                      </td>
+
+                                    </tr>
+                                 {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-employee">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+    </div>
+</div>
+
+
+{% endblock content %}

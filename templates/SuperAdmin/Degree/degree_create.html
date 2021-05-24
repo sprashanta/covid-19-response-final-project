@@ -1,0 +1,19 @@
+{% extends 'SuperAdmin/SuperAdminNavbar.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block javascript %}
+
+{% endblock javascript %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h1>Degree Information</h1>
+    {{ form|crispy }}
+    <br>
+    <input  class="btn btn-info" type="submit" value="Submit">
+
+    <a  class="btn btn-primary" href="{% url 'list_degree' %}">Back Degree List</a>
+</form>
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends 'Base/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+            <h2>Patient View All Appointment List </h2>
+        </div>
+<div class="col-md-12 col-sm-12">
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Patient Name</th>
+      <th scope="col">Patient Problem</th>
+      <th scope="col">Appointment Status</th>
+      <th scope="col">Doctor Assign</th>
+      <th scope="col">Meet Up Link</th>
+      <th scope="col">Meet Up Date</th>
+      <th scope="col">Meet Up Time</th>
+      <th scope="col">Doctor Check UP Status</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for appointment in appointment %}
+    <tr>
+
+              <th scope="row">{{ forloop.counter }}</th>
+              <td>{{ appointment.patient_name }}</td>
+              <td>{{ appointment.patient_description }}</td>
+              <td>{{ appointment.status }}</td>
+              <td>{{ appointment.doctor_name }}</td>
+              <td><a href="{{ appointment.meet_link }}" target="_blank">{{ appointment.meet_link }}</a></td>
+              <td>{{ appointment.date }}</td>
+              <td>{{ appointment.time }}</td>
+               <td>{{ appointment.doctor_checkup }}</td>
+
+    </tr>
+
+ {% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+{% endblock content %}

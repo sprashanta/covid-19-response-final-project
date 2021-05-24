@@ -1,0 +1,67 @@
+{% extends 'SuperAdmin/SuperAdminNavbar.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<br>
+
+
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>ICU BOOKING<small>List</small></h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                        <table class="table" id="datatable-buttons"  style="width:100%">
+                            <thead>
+                                <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">Patient Name</th>
+                                      <th scope="col">Patient Phone Number</th>
+                                      <th scope="col">Hospital Name</th>
+                                      <th scope="col">Icu Bed Booking Status</th>
+                                      <th></th>
+                                      <th>Delete</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for booking_icu_bed in booking_icu_bed %}
+                            <tr>
+
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ booking_icu_bed.patient_name }}</td>
+                                <td>{{ booking_icu_bed.patient_name.phone_number }}</td>
+                                <td>{{ booking_icu_bed.hospital_name }}</td>
+                                <td>{{ booking_icu_bed.status }}</td>
+                                <td>
+                                    {% if booking_icu_bed.status == "Approved" %}
+                                        Already Approved
+                                    {% else %}
+                                        <a href="{% url 'icu_booking_status_change' booking_icu_bed.pk %}" class="btn btn-primary">Confirm Icu bed</a>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'icu_booking_delete' booking_icu_bed.pk %}" class="btn btn-primary">Delete </a>
+                                </td>
+                            </tr>
+                             {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

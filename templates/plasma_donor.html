@@ -1,0 +1,73 @@
+{% extends 'Base/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+            <h2> View All Plasma List </h2>
+        </div>
+<div class="col-md-12 col-sm-12">
+    <div class="col-md-12 col-sm-12">
+        <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+            <form method="get">
+                {{ MyFilter.form }}
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Donor Name</th>
+          <th scope="col"> Email</th>
+          <th scope="col">Blood Group</th>
+          <th scope="col">Donor Location</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+         {% for plasma_donor in plasma_donor %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ plasma_donor.donor_name }}</td>
+                <td>{{ plasma_donor.donor_name.email }}</td>
+                <td>{{ plasma_donor.blood_group }}</td>
+                <td>{{ plasma_donor.donor_location }}</td>
+                <td>{{ plasma_donor.donor_name.phone_number }}</td>
+                <td>{{ plasma_donor.created }}</td>
+            </tr>
+         {% endfor %}
+      </tbody>
+    </table>
+    {% if plasma_donor.has_other_pages %}
+            <nav aria-label="event-pagination" id="pagination">
+                <ul class="pagination">
+                    {% if plasma_donor.has_previous %}
+                        <li class="page-item"><a href="?page={{ plasma_donor.previous_page_number }}" class="page-link">&laquo;</a></li>
+                    {% else %}
+                        <li class="page-item disabled" ><span class="page-link">&laquo;</span></li>
+                    {% endif %}
+                    {% for i in plasma_donor.paginator.page_range %}
+                        {% if plasma_donor.number == i %}
+                            <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if plasma_donor.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ plasma_donor.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+    {% endif %}
+
+</div>
+
+
+{% endblock content %}
